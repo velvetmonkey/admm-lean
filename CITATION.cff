@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "admm-lean: Formal Proofs for ADMM Residual and Objective Convergence in Lean 4"
+authors:
+  - family-names: Cassie
+    given-names: Ben
+repository-code: "https://github.com/velvetmonkey/admm-lean"
+license: MIT
+version: "0.1.0"
+date-released: "2026-05-31"
