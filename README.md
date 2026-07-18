@@ -1,5 +1,6 @@
 # admm-lean
 
+[![thread](https://img.shields.io/badge/%F0%9F%A7%B5-how%20it%20works-1DA1F2)](https://x.com/thevelvetmonke)
 [![Lean 4](https://img.shields.io/badge/Lean-4.28.0-blue)](https://lean-lang.org/)
 [![Mathlib](https://img.shields.io/badge/Mathlib-v4.28.0-purple)](https://github.com/leanprover-community/mathlib4)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -12,7 +13,15 @@ Lean 4 formal proofs for the Alternating Direction Method of Multipliers (ADMM).
 
 **Zero sorry statements.** Standard axioms only (`propext`, `Classical.choice`, `Quot.sound`).
 
-## Why it matters
+## What this is, and why it matters
+
+This library formalizes the Alternating Direction Method of Multipliers, an optimization method that alternates two simpler minimization steps with a dual update. Its headline theorem, `admm_convergence`, proves objective-value convergence when a nonnegative Lyapunov sequence satisfies the standard ADMM decrease inequality and objective error is bounded by the primal and dual residual norms.
+
+The result matters because the convergence chain is machine checked. The development telescopes the Lyapunov decrease, obtains summability, proves that both residual norms tend to zero, and then squeezes the objective error to zero. The setup allows general real inner product spaces and continuous linear constraint maps.
+
+The scope is conditional. The ADMM-specific Lyapunov decrease inequality is supplied as a hypothesis, not derived in this library from convexity, subdifferential calculus, or saddle-point existence. The residual-to-objective bound is also assumed. What is fully proved is the implication from those explicit assumptions to residual and objective convergence.
+
+## Background and motivation
 
 ADMM is a standard algorithm for distributed and decomposable optimisation. It solves constrained problems of the form:
 
